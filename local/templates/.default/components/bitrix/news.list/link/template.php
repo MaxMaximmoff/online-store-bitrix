@@ -21,16 +21,16 @@
                 <?= $arItem['PROPERTIES']['PHONE']['VALUE']; ?>
               </td>
               <td class="news-item" id="">
-                <?= $arItem['PROPERTIES']['ADDRESS']['CITY']['VALUE']; ?>
+                <?= $arItem['PROPERTY_ADDRESS_PROPERTY_CITY_VALUE']; ?>
               </td>
               <td class="news-item" id="">
-                <?= $arItem['PROPERTIES']['ADDRESS']['STREET']['VALUE']; ?>
+                <?= $arItem['PROPERTY_ADDRESS_PROPERTY_STREET_VALUE']; ?>
               </td>
               <td class="news-item" id="">
-                <?= $arItem['PROPERTIES']['ADDRESS']['HOUSE']['VALUE']; ?>
+                <?= $arItem['PROPERTY_ADDRESS_PROPERTY_HOUSE_VALUE']; ?>
               </td>
               <td class="news-item" id="">
-                <?= $arItem['PROPERTIES']['ADDRESS']['FLAT']['VALUE']; ?>
+                <?= $arItem['PROPERTY_ADDRESS_PROPERTY_FLAT_VALUE']; ?>
               </td>
 
           </tr>

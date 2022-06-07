@@ -1,28 +1,28 @@
 <?
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 
+use Ylab\Helpers;
+
 $APPLICATION->SetTitle("Контакты клиентов");
 ?>
 
 <?$APPLICATION->IncludeComponent(
 	"bitrix:news.list", 
 	"link", 
-	array(
+	[
 		"IBLOCK_TYPE" => "contacts",
-		"IBLOCK_ID" => "8",
-		"NEWS_COUNT" => "5",
+		"IBLOCK_ID" => Helpers::getIBlockIdByCode('contact'),
 		"PROPERTY_CODE" => [
-			'PHONE',
 			'FULLNAME',
+			'PHONE',
 			'ADDRESS'
 		],
-		"COMPONENT_TEMPLATE" => "link",
-		"SORT_BY1" => "ACTIVE_FROM",
-		"SORT_ORDER1" => "DESC",
-		"SORT_BY2" => "SORT",
-		"SORT_ORDER2" => "ASC",
-
-	),
-	false
+		"FIELD_CODE" => [
+			'PROPERTY_ADDRESS.PROPERTY_CITY',
+			'PROPERTY_ADDRESS.PROPERTY_STREET',
+			'PROPERTY_ADDRESS.PROPERTY_HOUSE',
+			'PROPERTY_ADDRESS.PROPERTY_FLAT',
+		],
+	]
 );?><?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>
 

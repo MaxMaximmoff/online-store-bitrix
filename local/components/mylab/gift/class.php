@@ -2,6 +2,7 @@
 
 namespace Mylab\Components;
 
+use Bitrix\Main\Application;
 use Bitrix\Main\ArgumentException;
 use Bitrix\Main\LoaderException;
 use Bitrix\Main\ObjectPropertyException;
@@ -30,7 +31,8 @@ class GiftComponent extends CBitrixComponent
    */
   private $minPrice = 500;
   private $minGiftedQuantity = 3;
-  private $elementCode = "New-Era-115";
+  private $elementCode = "GIFTS";
+//  private $elementCode = "New-Era-115";
   private $iblockCode = "clothes";
   private $moduleName = "catalog";
 
@@ -58,6 +60,7 @@ class GiftComponent extends CBitrixComponent
     $iblockCode = $this->iblockCode;
 
     $productId = Helpers::getElementIdByCode($elementCode, $iblockCode);
+    var_dump($productId);
 
     // Добавляем подарок в корзину, если выполняется требуемое условие
     if ($this->arResult['IF_GIFT'] && !$this->checkIfGiftInBasket($productId)) {
@@ -68,21 +71,31 @@ class GiftComponent extends CBitrixComponent
       $this->deleteItemFromBasket($productId);
     }
 
-//  Обработка формы
-    if (isset($_POST['quantity'])) {
-//       Если нет ошибок
-      if (true) {
+////  Обработка формы
+//    if (isset($_POST['quantity'])) {
+////       Если нет ошибок
+//      if (true) {
+//        $this->deleteItemFromBasket($productId);
+//        $this->addItemToBasket($productId, $_POST['quantity']);
+//        $_SESSION['flash'] = 'Запись добавлена';
+//        // обновление страницы
+//        header("Location: " . $_SERVER['REQUEST_URI']);
+//      }
+//    } else {
+//      // Обычный запрос
+//      if (!empty($_SESSION['flash'])) {
+////        print $_SESSION['flash'];
+//        unset($_SESSION['flash']);
+//      }
+//    }
+
+//    Использование классов битрикса вместо глобальных переменных для обработки формы
+    $request = Application::getInstance()->getContext()->getRequest();
+
+    if($request->isPost() && !empty($request->get('getGifts'))) {
+      if ((int)$request->get('quantity') >= 0) {
         $this->deleteItemFromBasket($productId);
-        $this->addItemToBasket($productId, $_POST['quantity']);
-        $_SESSION['flash'] = 'Запись добавлена';
-        // обновление страницы
-        header("Location: " . $_SERVER['REQUEST_URI']);
-      }
-    } else {
-      // Обычный запрос
-      if (!empty($_SESSION['flash'])) {
-//        print $_SESSION['flash'];
-        unset($_SESSION['flash']);
+        $this->addItemToBasket($productId, (int)$request->get('quantity'));
       }
     }
 
@@ -142,7 +155,8 @@ class GiftComponent extends CBitrixComponent
         'QUANTITY' => $quantity,
         'CURRENCY' => Currency\CurrencyManager::getBaseCurrency(),
         'LID' => Context::getCurrent()->getSite(),
-        'PRODUCT_PROVIDER_CLASS' => 'CCatalogProductProvider',
+//        'PRODUCT_PROVIDER_CLASS' => 'CCatalogProductProvider',
+        'PRICE' => 0,
       ));
     }
     $basket->save();

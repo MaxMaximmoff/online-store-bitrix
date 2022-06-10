@@ -32,7 +32,8 @@ use Bitrix\Main\Localization\Loc;
 <div class="basket-checkout-block">
     <form action="" method="POST">
         <div><label for="">Количество подарков: <input type="number" name="quantity" value="0"></label></div>
-        <div><input type="submit" class="btn btn-lg btn-primary" value="Хочу столько"></div>
+<!--        <div><input type="submit" class="btn btn-lg btn-primary" name="getGifts" value="Хочу столько"></div>-->
+        <div><button type="submit" class="btn btn-lg btn-primary" name="getGifts" value="yes"><?= "Хочу столько" ?></div>
     </form>
 </div>
 

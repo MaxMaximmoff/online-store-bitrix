@@ -1,0 +1,6 @@
+<?php
+$MESS['YLAB_IMPORT_MODULE_NAME'] = 'YLAB Модуль импорта товаров';
+$MESS['YLAB_IMPORT_MODULE_DESCRIPTION'] = 'YLAB импорта товаров';
+$MESS['YLAB_IMPORT_STEP_1'] = 'STEP_1';
+$MESS['YLAB_IMPORT_STEP_2'] = 'STEP_2';
+$MESS['YLAB_IMPORT_STEP_3'] = 'STEP_3';

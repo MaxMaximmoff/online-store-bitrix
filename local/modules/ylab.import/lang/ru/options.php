@@ -22,4 +22,11 @@ $MESS['YLAB.IMPORT.PASSWORD'] = 'Параметр (пароль): ';
 $MESS['YLAB.IMPORT.CHECKBOX1'] = 'Параметр чекбокса 1';
 $MESS['YLAB.IMPORT.CHECKBOX2'] = 'Параметр чекбокса 2';
 $MESS['YLAB.IMPORT.SELECTBOX'] = 'Параметр selectbox';
+$MESS['YLAB.IMPORT.SELECTBOX.VAL1'] = 'Значение1';
+$MESS['YLAB.IMPORT.SELECTBOX.VAL2'] = 'Значение2';
+$MESS['YLAB.IMPORT.SELECTBOX.VAL3'] = 'Значение3';
+
 $MESS['YLAB.IMPORT.MULTISELECTBOX'] = 'Параметр multiselectbox';
+$MESS['YLAB.IMPORT.MULTISELECTBOX.VAL1'] = 'Значение1';
+$MESS['YLAB.IMPORT.MULTISELECTBOX.VAL2'] = 'Значение2';
+$MESS['YLAB.IMPORT.MULTISELECTBOX.VAL3'] = 'Значение3';

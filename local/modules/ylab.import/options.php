@@ -29,23 +29,6 @@ $aTabs = [
   ],
 ];
 
-$aTabs = [
-  [
-    "DIV" => "ylab_import_tab2",
-    "TAB" => Loc::getMessage("YLAB.IMPORT.SETTINGS2"),
-    "ICON" => "settings",
-    "TITLE" => Loc::getMessage("YLAB.IMPORT.TITLE2"),
-  ],
-];
-
-$aTabs = [
-  [
-    "DIV" => "ylab_import_tab3",
-    "TAB" => Loc::getMessage("YLAB.IMPORT.SETTINGS3"),
-    "ICON" => "settings",
-    "TITLE" => Loc::getMessage("YLAB.IMPORT.TITLE3"),
-  ],
-];
 
 $aTabs[] = [
   'DIV' => 'rights',
@@ -57,34 +40,45 @@ $arAllOptions = [
 
   'main' => [
     Loc::getMessage("YLAB.IMPORT.NOTE.TITLE.TAB1"),
-    ['note1' => Loc::getMessage("YLAB.IMPORT.NOTE.NOTE1")],
+    ['note' => Loc::getMessage("YLAB.IMPORT.NOTE.NOTE1")],
     ["limit_to_import", Loc::getMessage("YLAB.IMPORT.LIMIT_TO_IMPORT"), '', ['text', '']],
     ["textarea", 'textarea', '', ['textarea', '8', '60']],
-  ],
-  'tab2' => [
     Loc::getMessage("YLAB.IMPORT.NOTE.TITLE.TAB2"),
-    ['note2' => Loc::getMessage("YLAB.IMPORT.NOTE.NOTE2")],
+    ['note' => Loc::getMessage("YLAB.IMPORT.NOTE.NOTE2")],
     ['password', Loc::getMessage("YLAB.IMPORT.PASSWORD"), '', ['password', 20]],
-    ['note3' => Loc::getMessage("YLAB.IMPORT.NOTE.NOTE3")],
+    ['note' => Loc::getMessage("YLAB.IMPORT.NOTE.NOTE3")],
     ['checkbox1', Loc::getMessage("YLAB.IMPORT.CHECKBOX1"), '', ['checkbox', '', 'onclick=""']],
     ['checkbox2', Loc::getMessage("YLAB.IMPORT.CHECKBOX2"), '', ['checkbox'], 'N'],
-    ['note4' => Loc::getMessage("YLAB.IMPORT.NOTE.NOTE4")],
-    ['selectbox', Loc::getMessage("YLAB.IMPORT.SELECTBOX"), 'val1', ['selectbox', ["val1" => "Значение1", "val2" => "Значение2", "val3" => "Значение3"]]],
-    ['multiselectbox', Loc::getMessage("YLAB.IMPORT.MULTISELECTBOX"), 'val2', ['multiselectbox', ["val1" => "Значение1", "val2" => "Значение2", "val3" => "Значение3"]], 'N'],
-  ],
-  'tab3' => [
+    ['note' => Loc::getMessage("YLAB.IMPORT.NOTE.NOTE4")],
+    ['selectbox', Loc::getMessage("YLAB.IMPORT.SELECTBOX"), 'val1', ['selectbox',
+      [
+        "val1" => Loc::getMessage("YLAB.IMPORT.SELECTBOX.VAL1"),
+        "val2" => Loc::getMessage("YLAB.IMPORT.SELECTBOX.VAL2"),
+        "val3" => Loc::getMessage("YLAB.IMPORT.SELECTBOX.VAL3")
+      ]]],
+    ['multiselectbox', Loc::getMessage("YLAB.IMPORT.MULTISELECTBOX"), 'val2', ['multiselectbox',
+      [
+        "val1" => Loc::getMessage("YLAB.IMPORT.MULTISELECTBOX.VAL1"),
+        "val2" => Loc::getMessage("YLAB.IMPORT.MULTISELECTBOX.VAL2"),
+        "val3" => Loc::getMessage("YLAB.IMPORT.MULTISELECTBOX.VAL3")
+      ]],
+      'N'
+    ],
     Loc::getMessage("YLAB.IMPORT.NOTE.TITLE.TAB3"),
-    ['note5' => Loc::getMessage("YLAB.IMPORT.NOTE.NOTE5")],
+    ['note' => Loc::getMessage("YLAB.IMPORT.NOTE.NOTE5")],
     ['statictext', Loc::getMessage("YLAB.IMPORT.NOTE.NOTE6"), 'Текст текст текст <b>текст</b>', ['statictext']],
     ['statichtml', Loc::getMessage("YLAB.IMPORT.NOTE.NOTE7"), 'Html <span style="color:green;"><b>html</b></span> html html', ['statichtml']],
   ],
+
+
 ];
 
 if (($request->get('save') !== null || $request->get('apply') !== null) && check_bitrix_sessid()) {
-  foreach ($arAllOptions as $arAllOption) {
-    __AdmSettingsSaveOptions($module_id, $arAllOption);
-  }
+
+  __AdmSettingsSaveOptions($module_id, $arAllOptions['main']);
+
 }
+
 
 $tabControl = new CAdminTabControl("tabControl", $aTabs);
 
@@ -96,10 +90,10 @@ $tabControl = new CAdminTabControl("tabControl", $aTabs);
 
   $tabControl->Begin();
 
-  foreach ($arAllOptions as $key => $option) {
-    $tabControl->BeginNextTab();
-    __AdmSettingsDrawList($module_id, $option);
-  }
+  $tabControl->BeginNextTab();
+
+  __AdmSettingsDrawList($module_id, $arAllOptions["main"]);
+
 
   $tabControl->BeginNextTab();
 

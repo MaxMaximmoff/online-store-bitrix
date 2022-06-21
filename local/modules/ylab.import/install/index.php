@@ -50,7 +50,8 @@ class ylab_import extends CModule
 
     if (!isset($request['step'])) {
       $APPLICATION->IncludeAdminFile(Loc::getMessage('YLAB_IMPORT_STEP_1'), $this->GetPath() . '/install/step1.php');
-    } elseif ($request['step'] == 2) {
+    }
+    elseif ($request['step'] == 2) {
 
       $this->setOptions([
         'limit_to_import',
@@ -58,7 +59,8 @@ class ylab_import extends CModule
       ], $request->toArray());
 
       $APPLICATION->IncludeAdminFile(Loc::getMessage('YLAB_IMPORT_STEP_2'), $this->GetPath() . '/install/step2.php');
-    } elseif ($request['step'] == 3) {
+    }
+    elseif ($request['step'] == 3) {
 
       $this->setOptions([
         'password',
@@ -87,7 +89,7 @@ class ylab_import extends CModule
     $white_list = array_flip($white_list);
 
     foreach ($input_list as $key => $value) {
-      if ($key == 'note1' || $key == 'note2' || $key == 'note3' || $key == 'note4' || $key == 'note5') {
+      if ($key == 'note') {
         continue;
       }
       if (key_exists($key, $white_list)) {
@@ -218,4 +220,5 @@ class ylab_import extends CModule
 
     return dirname(__DIR__);
   }
+
 }

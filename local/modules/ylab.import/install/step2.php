@@ -19,18 +19,16 @@ Loc::loadMessages(__FILE__);
   </label><br><br>
   <label><?= Loc::getMessage('YLAB.IMPORT.SELECTBOX') ?>
     <select name="selectbox">
-      <option value="var1">var1</option>
-      <option value="var2">var2</option>
-      <option value="var3">var3</option>
-      <option value="var4">var4</option>
+      <option value="val1"><?= Loc::getMessage("YLAB.IMPORT.SELECTBOX_VAL1") ?></option>
+      <option value="val2"><?= Loc::getMessage("YLAB.IMPORT.SELECTBOX_VAL2") ?></option>
+      <option value="val3"><?= Loc::getMessage("YLAB.IMPORT.SELECTBOX_VAL3") ?></option>
     </select>
   </label><br><br>
   <label><?= Loc::getMessage('YLAB.IMPORT.MULTISELECTBOX') ?>
-    <select name="multiselectbox[]" multiple size="5">
-      <option value="var1">var1</option>
-      <option value="var2">var2</option>
-      <option value="var3">var3</option>
-      <option value="var4">var4</option>
+    <select name="multiselectbox[]" multiple size="3">
+      <option value="val1"><?= Loc::getMessage("YLAB.IMPORT.MULTISELECTBOX_VAL1") ?></option>
+      <option value="val2"><?= Loc::getMessage("YLAB.IMPORT.MULTISELECTBOX_VAL2") ?></option>
+      <option value="val3"><?= Loc::getMessage("YLAB.IMPORT.MULTISELECTBOX_VAL3") ?></option>
     </select>
   </label><br><br>
 

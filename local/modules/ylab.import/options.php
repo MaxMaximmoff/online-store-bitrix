@@ -47,8 +47,9 @@ $arAllOptions = [
     ['note' => Loc::getMessage("YLAB.IMPORT.NOTE.NOTE2")],
     ['password', Loc::getMessage("YLAB.IMPORT.PASSWORD"), '', ['password', 20]],
     ['note' => Loc::getMessage("YLAB.IMPORT.NOTE.NOTE3")],
-    ['checkbox1', Loc::getMessage("YLAB.IMPORT.CHECKBOX1"), '', ['checkbox', '', 'onclick=""']],
-    ['checkbox2', Loc::getMessage("YLAB.IMPORT.CHECKBOX2"), '', ['checkbox'], 'N'],
+    ['checkbox_1', Loc::getMessage("YLAB.IMPORT.CHECKBOX1"), '', ['checkbox', '', 'onclick=""']],
+//    ['checkbox2', Loc::getMessage("YLAB.IMPORT.CHECKBOX2"), '', ['checkbox'], 'N'],
+    ['checkbox_2', Loc::getMessage("YLAB.IMPORT.CHECKBOX2"), '', ['checkbox',]],
     ['note' => Loc::getMessage("YLAB.IMPORT.NOTE.NOTE4")],
     ['selectbox', Loc::getMessage("YLAB.IMPORT.SELECTBOX"), 'val1', ['selectbox',
       [
@@ -75,7 +76,10 @@ $arAllOptions = [
 
 if (($request->get('save') !== null || $request->get('apply') !== null) && check_bitrix_sessid()) {
 
-  __AdmSettingsSaveOptions($module_id, $arAllOptions['main']);
+//  __AdmSettingsSaveOptions($module_id, $arAllOptions['main']);
+  foreach ($arAllOptions as $arAllOption) {
+    __AdmSettingsSaveOptions($module_id, $arAllOption);
+  }
 
 }
 
@@ -90,9 +94,13 @@ $tabControl = new CAdminTabControl("tabControl", $aTabs);
 
   $tabControl->Begin();
 
-  $tabControl->BeginNextTab();
-
-  __AdmSettingsDrawList($module_id, $arAllOptions["main"]);
+  //  $tabControl->BeginNextTab();
+  //
+  //  __AdmSettingsDrawList($module_id, $arAllOptions["main"]);
+  foreach ($arAllOptions as $key => $option) {
+    $tabControl->BeginNextTab();
+    __AdmSettingsDrawList($module_id, $option);
+  }
 
 
   $tabControl->BeginNextTab();

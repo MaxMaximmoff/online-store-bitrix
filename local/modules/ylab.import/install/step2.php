@@ -11,12 +11,12 @@ Loc::loadMessages(__FILE__);
   <label><?= Loc::getMessage('YLAB.IMPORT.PASSWORD') ?><br>
     <input type="password" name="password" value="">
   </label><br><br>
-  <label><?= Loc::getMessage('YLAB.IMPORT.CHECKBOX1') ?></label><br>
-    <input type="checkbox" name="checkbox_1">
-  <br>
-  <label><?= Loc::getMessage('YLAB.IMPORT.CHECKBOX2') ?></label><br>
-    <input type="checkbox" name="checkbox_2">
-  <br>
+    <label><?= Loc::getMessage('YLAB.IMPORT.CHECKBOX1') ?>
+        <input type="checkbox" name="checkbox1" value="Y">
+    </label><br><br>
+  <label><?= Loc::getMessage('YLAB.IMPORT.CHECKBOX2') ?>
+    <input type="checkbox" name="checkbox2" value="Y">
+  </label><br><br>
   <label><?= Loc::getMessage('YLAB.IMPORT.SELECTBOX') ?>
     <select name="selectbox">
       <option value="val1"><?= Loc::getMessage("YLAB.IMPORT.SELECTBOX_VAL1") ?></option>
